@@ -125,6 +125,8 @@ void APlayerCharacter::TakeDamage(AActor* DamagedActor, float Damage, const UDam
 
 	CurrentHealth = FMath::Clamp(CurrentHealth - Damage, 0.f, MaxHealth);
 
+	OnHit_BP();
+
 	if (CurrentHealth <= 0.f)
 	{
 		bIsDead = true;
@@ -137,4 +139,9 @@ void APlayerCharacter::TakeDamage(AActor* DamagedActor, float Damage, const UDam
 bool APlayerCharacter::GetIsDead() const
 {
 	return bIsDead;
+}
+
+float APlayerCharacter::GetCurrentHealth() const
+{
+	return CurrentHealth;
 }

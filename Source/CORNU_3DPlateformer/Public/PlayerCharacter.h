@@ -49,16 +49,13 @@ protected:
 
 
 	//
-	UPROPERTY(BlueprintReadOnly)
-		bool bIsDead;
+	bool bIsDead;
 
 
 	//
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Health")
 		float MaxHealth;
-
-	UPROPERTY(BlueprintReadOnly)
-		float CurrentHealth;
+	float CurrentHealth;
 
 	UFUNCTION()
 		void TakeDamage(AActor* DamagedActor, float Damage, const class UDamageType* DamageType, class AController* InstigatedBy, AActor* DamageCauser);
@@ -75,6 +72,12 @@ public:
 	UFUNCTION(BlueprintImplementableEvent)
 		void CameraFade_BP();
 
+	UFUNCTION(BlueprintImplementableEvent)
+		void OnHit_BP();
+
 	UFUNCTION(BlueprintPure)
 		bool GetIsDead() const;
+
+	UFUNCTION(BlueprintPure)
+		float GetCurrentHealth() const;
 };
